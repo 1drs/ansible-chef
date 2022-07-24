@@ -1,0 +1,5 @@
+client:
+  hosts:
+    client.jcolab.lan:
+    jenkins.jcolab.lan:
+    elk.jcolab.lan:

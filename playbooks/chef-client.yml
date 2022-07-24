@@ -1,0 +1,7 @@
+---
+- name: chef client setup
+  hosts: client
+  gather_facts: yes
+  roles:
+    - { role: client-setup, tags: 'client-setup' }
+    - { role: client-register, tags: 'client-register' }
