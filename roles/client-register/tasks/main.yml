@@ -1,0 +1,14 @@
+- name: Check client
+  command: "knife client show {{ hostname }}"
+  ignore_errors: yes
+  register: clientcheck
+  delegate_to: localhost
+
+- name: Register client
+  shell: >
+    knife bootstrap -y {{ ansible_host }}
+    -x root --node-name {{ hostname }}
+  when: clientcheck.failed is true
+  delegate_to: localhost
+  args:
+    chdir: "/Users/indrarisapradana/chef-repo"

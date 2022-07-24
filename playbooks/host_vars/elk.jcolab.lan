@@ -1,0 +1,3 @@
+hostname: elk.jcolab.lan
+ansible_host: 192.168.10.123
+ansible_user: root

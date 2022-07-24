@@ -1,0 +1,18 @@
+- name: Setup hostname
+  hostname:
+    name: "{{ hostname }}"
+  register: sethostname
+
+- name: Set hosts file
+  template:
+    src: "hosts.j2"
+    dest: "/etc/hosts"
+    mode: 0644
+    owner: root
+    group: adm
+  register: sethosts
+
+- name: Reboot server
+  reboot:
+    reboot_timeout: 3600
+  when: sethostname.changed is true
